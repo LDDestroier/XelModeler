@@ -99,11 +99,11 @@ frame:useBLittle(camera.useBLittle)
 local render = function() --loops
 	while true do
 		movementTick()
-		ThreeDFrame:setCamera(camera.x, camera.y, camera.z, camera.lookZ, camera.lookY)
-		ThreeDFrame:loadGround(backgroundColors.ground)
-		ThreeDFrame:loadSky(backgroundColors.sky)
-		ThreeDFrame:loadObjects(objects)
-		ThreeDFrame:drawBuffer()
+		frame:setCamera(camera.x, camera.y, camera.z, camera.lookZ, camera.lookY)
+		frame:loadGround(backgroundColors.ground)
+		frame:loadSky(backgroundColors.sky)
+		frame:loadObjects(objects)
+		frame:drawBuffer()
 		os.queueEvent("queue")
 		os.pullEvent("queue")
 	end
