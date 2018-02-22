@@ -1,13 +1,13 @@
 
 -- Made by Xelostar: https://www.youtube.com/channel/UCDE2STpSWJrIUyKtiYGeWxw
 
-local path = "/"..shell.dir()
+local path = fs.getDir(shell.getRunningProgram())
 
-os.loadAPI(path.."/ThreeD")
-os.loadAPI(path.."/bufferAPI")
-os.loadAPI(path.."/blittle")
+os.loadAPI(fs.combine(path,"ThreeD"))
+os.loadAPI(fs.combine(path,"bufferAPI"))
+os.loadAPI(fs.combine(path,"blittle"))
 
-objects = {
+local objects = {
 	{model = "box", x = 4, y = 0.5, z = 0, rotationY = 0},
 	{model = "box", x = 4, y = 1.5, z = 0, rotationY = 0},
 	{model = "box", x = 4, y = 0.5, z = 1, rotationY = 0},
@@ -20,30 +20,30 @@ objects = {
 	{model = "pineapple", x = 2, y = 0, z = 1, rotationY = 0},
 }
 
-playerX = 1.5
-playerY = 0
-playerZ = 1
+local playerX = 1.5
+local playerY = 0
+local playerZ = 1
 
-playerSpeed = 0.25
-playerTurnSpeed = 10
+local playerSpeed = 0.25
+local playerTurnSpeed = 10
 
-FoV = 90
+local FoV = 90
 
-playerDirectionHor = 0
-playerDirectionVer = 0
+local playerDirectionHor = 0
+local playerDirectionVer = 0
 
-screenWidth, screenHeight = term.getSize()
+local screenWidth, screenHeight = term.getSize()
 
-backgroundColor1 = colors.lime
-backgroundColor2 = colors.lightBlue
+local backgroundColor1 = colors.lime
+local backgroundColor2 = colors.lightBlue
 
-ThreeDFrame = ThreeD.newFrame(1, 1, screenWidth, screenHeight, FoV, playerX, playerY + 0.5, playerZ, playerDirectionVer, playerDirectionHor, colors.lime, path.."/models")
-blittleOn = false
+local ThreeDFrame = ThreeD.newFrame(1, 1, screenWidth, screenHeight, FoV, playerX, playerY + 0.5, playerZ, playerDirectionVer, playerDirectionHor, colors.lime, path.."/models")
+local blittleOn = false
 ThreeDFrame:useBLittle(blittleOn)
 
-time = 0
+local time = 0
 
-function rendering()
+local function rendering()
 	while true do
 		ThreeDFrame:loadGround(backgroundColor1)
 		ThreeDFrame:loadSky(backgroundColor2)
@@ -55,7 +55,7 @@ function rendering()
 	end
 end
 
-function inputPlayer()
+local function inputPlayer()
 	while true do
 		local sEvent, key = os.pullEventRaw()
 
@@ -119,7 +119,7 @@ function inputPlayer()
 	end
 end
 
-function gameUpdate()
+local function gameUpdate()
 	while true do
 		for objectNr, object in pairs(objects) do
 			if (object.model == "pineapple") then
