@@ -1,0 +1,137 @@
+
+-- Made by Xelostar: https://www.youtube.com/channel/UCDE2STpSWJrIUyKtiYGeWxw
+
+local path = "/"..shell.dir()
+
+os.loadAPI(path.."/ThreeD")
+os.loadAPI(path.."/bufferAPI")
+os.loadAPI(path.."/blittle")
+
+objects = {
+	{model = "box", x = 4, y = 0.5, z = 0, rotationY = 0},
+	{model = "box", x = 4, y = 1.5, z = 0, rotationY = 0},
+	{model = "box", x = 4, y = 0.5, z = 1, rotationY = 0},
+	{model = "box", x = 4, y = 0.5, z = 2, rotationY = 0},
+	{model = "box", x = 4, y = 0.5, z = 3, rotationY = 0},
+	{model = "box", x = 3, y = 0.5, z = 3, rotationY = 0},
+	{model = "box", x = 2, y = 0.5, z = 3, rotationY = 0},
+	{model = "box", x = 1, y = 0.5, z = 3, rotationY = 0},
+	{model = "box", x = 1, y = 1.5, z = 3, rotationY = 0},
+	{model = "pineapple", x = 2, y = 0, z = 1, rotationY = 0},
+}
+
+playerX = 1.5
+playerY = 0
+playerZ = 1
+
+playerSpeed = 0.25
+playerTurnSpeed = 10
+
+FoV = 90
+
+playerDirectionHor = 0
+playerDirectionVer = 0
+
+screenWidth, screenHeight = term.getSize()
+
+backgroundColor1 = colors.lime
+backgroundColor2 = colors.lightBlue
+
+ThreeDFrame = ThreeD.newFrame(1, 1, screenWidth, screenHeight, FoV, playerX, playerY + 0.5, playerZ, playerDirectionVer, playerDirectionHor, colors.lime, path.."/models")
+blittleOn = false
+ThreeDFrame:useBLittle(blittleOn)
+
+time = 0
+
+function rendering()
+	while true do
+		ThreeDFrame:loadGround(backgroundColor1)
+		ThreeDFrame:loadSky(backgroundColor2)
+		ThreeDFrame:loadObjects(objects)
+		ThreeDFrame:drawBuffer()
+
+		os.queueEvent("FakeEvent")
+		os.pullEvent("FakeEvent")
+	end
+end
+
+function inputPlayer()
+	while true do
+		local sEvent, key = os.pullEventRaw()
+
+		if (sEvent == "key") then
+			local dX = 0
+			local dY = 0
+			local dZ = 0 
+
+			if (key == keys.left) then
+				playerDirectionHor = (playerDirectionHor - playerTurnSpeed)
+				if (playerDirectionHor <= -180) then
+					playerDirectionHor = playerDirectionHor + 360
+				end
+			elseif (key == keys.right) then
+				playerDirectionHor = (playerDirectionHor + playerTurnSpeed)
+				if (playerDirectionHor >= 180) then
+					playerDirectionHor = playerDirectionHor - 360
+				end
+			elseif (key == keys.down) then
+				playerDirectionVer = (playerDirectionVer - playerTurnSpeed)
+				if (playerDirectionVer < -80) then
+					playerDirectionVer = -80
+				end
+			elseif (key == keys.up) then
+				playerDirectionVer = (playerDirectionVer + playerTurnSpeed)
+				if (playerDirectionVer > 80) then
+					playerDirectionVer = 80
+				end
+			elseif (key == keys.space) then
+				dY = playerSpeed
+			elseif (key == keys.leftShift) then
+				dY = -playerSpeed
+			elseif (key == keys.w) then
+				dX = playerSpeed * math.cos(math.rad(playerDirectionHor))
+				dZ = playerSpeed * math.sin(math.rad(playerDirectionHor))
+			elseif (key == keys.s) then
+				dX = -playerSpeed * math.cos(math.rad(playerDirectionHor))
+				dZ = -playerSpeed * math.sin(math.rad(playerDirectionHor))
+			elseif (key == keys.a) then
+				dX = playerSpeed * math.cos(math.rad(playerDirectionHor - 90))
+				dZ = playerSpeed * math.sin(math.rad(playerDirectionHor - 90))
+			elseif (key == keys.d) then
+				dX = playerSpeed * math.cos(math.rad(playerDirectionHor + 90))
+				dZ = playerSpeed * math.sin(math.rad(playerDirectionHor + 90))
+			elseif (key == keys.g) then
+				if (blittleOn == false) then
+					blittleOn = true
+					ThreeDFrame:useBLittle(true)
+				else
+					blittleOn = false
+					ThreeDFrame:useBLittle(false)
+				end
+			end
+
+			playerX = playerX + dX
+			playerY = playerY + dY
+			playerZ = playerZ + dZ
+
+			ThreeDFrame:setCamera(playerX, playerY + 0.5, playerZ, playerDirectionHor, playerDirectionVer)
+		end
+	end
+end
+
+function gameUpdate()
+	while true do
+		for objectNr, object in pairs(objects) do
+			if (object.model == "pineapple") then
+				object.y = math.sin(time/10)/4
+				object.rotationY = object.rotationY + 5
+			end
+		end
+		sleep(0)
+		time = time + 1
+	end
+end
+
+while true do
+	parallel.waitForAll(inputPlayer, rendering, gameUpdate)
+end

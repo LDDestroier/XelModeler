@@ -1,0 +1,66 @@
+--local model = { -- Start your own model here or modify a copy of another model
+	
+--}
+
+--[[local model = { -- Emerald
+	{x1 = -0.3, y1 = 0.4, z1 = -0.3, x2 = -0.3, y2 = 0.4, z2 = 0.3, x3 = 0, y3 = 0.8, z3 = 0, c = colors.lime},
+	{x1 = -0.3, y1 = 0.4, z1 = 0.3, x2 = 0.3, y2 = 0.4, z2 = 0.3, x3 = 0, y3 = 0.8, z3 = 0, c = colors.green},
+
+	{x1 = 0.3, y1 = 0.4, z1 = 0.3, x2 = 0.3, y2 = 0.4, z2 = -0.3, x3 = 0, y3 = 0.8, z3 = 0, c = colors.lime},
+	{x1 = 0.3, y1 = 0.4, z1 = -0.3, x2 = -0.3, y2 = 0.4, z2 = -0.3, x3 = 0, y3 = 0.8, z3 = 0, c = colors.green},
+
+	{x1 = -0.3, y1 = 0.4, z1 = -0.3, x2 = 0, y2 = 0, z2 = 0, x3 = -0.3, y3 = 0.4, z3 = 0.3, c = colors.green},
+	{x1 = -0.3, y1 = 0.4, z1 = 0.3, x2 = 0, y2 = 0, z2 = 0, x3 = 0.3, y3 = 0.4, z3 = 0.3, c = colors.lime},
+	
+	{x1 = 0.3, y1 = 0.4, z1 = 0.3, x2 = 0, y2 = 0, z2 = 0, x3 = 0.3, y3 = 0.4, z3 = -0.3, c = colors.green},
+	{x1 = 0.3, y1 = 0.4, z1 = -0.3, x2 = 0, y2 = 0, z2 = 0, x3 = -0.3, y3 = 0.4, z3 = -0.3, c = colors.lime},
+}]]--
+
+local model = { -- Pineapple
+	{x1 = 0.4, y1 = 0.3, z1 = 0.4, x2 = 0, y2 = 0, z2 = 0, x3 = -0.4, y3 = 0.3, z3 = 0.4, c = colors.yellow},
+	{x1 = 0, y1 = 0, z1 = 0, x2 = 0.4, y2 = 0.3, z2 = -0.4, x3 = 0.4, y3 = 0.3, z3 = 0.4, c = colors.orange},
+	{x1 = 0, y1 = 0, z1 = 0, x2 = -0.4, y2 = 0.3, z2 = -0.4, x3 = 0.4, y3 = 0.3, z3 = -0.4, c = colors.yellow},
+	{x1 = 0, y1 = 0, z1 = 0, x2 = -0.4, y2 = 0.3, z2 = 0.4, x3 = -0.4, y3 = 0.3, z3 = -0.4, c = colors.orange},
+
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = -0.4, y2 = 0.3, z2 = 0.4, x3 = 0.4, y3 = 0.3, z3 = 0.4, c = colors.orange},
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = 0.4, y2 = 0.3, z2 = 0.4, x3 = 0.4, y3 = 0.3, z3 = -0.4, c = colors.yellow},
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = 0.4, y2 = 0.3, z2 = -0.4, x3 = -0.4, y3 = 0.3, z3 = -0.4, c = colors.orange},
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = -0.4, y2 = 0.3, z2 = -0.4, x3 = -0.4, y3 = 0.3, z3 = 0.4, c = colors.yellow},
+
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = -0.3, y2 = 1, z2 = 0.3, x3 = 0.3, y3 = 1, z3 = 0.3, c = colors.lime, forceRender = true},
+	{x1 = 0, y1 = 0.8, z1 = 0, x2 = 0.3, y2 = 1, z2 = -0.3, x3 = -0.3, y3 = 1, z3 = -0.3, c = colors.green, forceRender = true},
+}
+
+--[[local model = { -- Spike
+	{x1 = -0.5, y1 = 0, z1 = -0.5, x2 = -0.5, y2 = 0, z2 = 0.5, x3 = 0, y3 = 1, z3 = 0, c = colors.red},
+	{x1 = -0.5, y1 = 0, z1 = 0.5, x2 = 0.5, y2 = 0, z2 = 0.5, x3 = 0, y3 = 1, z3 = 0, c = colors.orange},
+
+	{x1 = 0.5, y1 = 0, z1 = 0.5, x2 = 0.5, y2 = 0, z2 = -0.5, x3 = 0, y3 = 1, z3 = 0, c = colors.red},
+	{x1 = 0.5, y1 = 0, z1 = -0.5, x2 = -0.5, y2 = 0, z2 = -0.5, x3 = 0, y3 = 1, z3 = 0, c = colors.orange},
+}]]--
+
+--[[local model = { -- Box
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = 0.5, y2 = -0.5, z2 = 0.5, x3 = -0.5, y3 = -0.5, z3 = 0.5, c = colors.red},
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = 0.5, y2 = -0.5, z2 = -0.5, x3 = 0.5, y3 = -0.5, z3 = 0.5, c = colors.orange},
+
+	{x1 = -0.5, y1 = 0.5, z1 = -0.5, x2 = -0.5, y2 = 0.5, z2 = 0.5, x3 = 0.5, y3 = 0.5, z3 = 0.5, c = colors.yellow},
+	{x1 = -0.5, y1 = 0.5, z1 = -0.5, x2 = 0.5, y2 = 0.5, z2 = 0.5, x3 = 0.5, y3 = 0.5, z3 = -0.5, c = colors.lime},
+
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = -0.5, y2 = -0.5, z2 = 0.5, x3 = -0.5, y3 = 0.5, z3 = 0.5, c = colors.green},
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = -0.5, y2 = 0.5, z2 = 0.5, x3 = -0.5, y3 = 0.5, z3 = -0.5, c = colors.cyan},
+
+	{x1 = 0.5, y1 = -0.5, z1 = -0.5, x2 = 0.5, y2 = 0.5, z2 = 0.5, x3 = 0.5, y3 = -0.5, z3 = 0.5, c = colors.blue},
+	{x1 = 0.5, y1 = -0.5, z1 = -0.5, x2 = 0.5, y2 = 0.5, z2 = -0.5, x3 = 0.5, y3 = 0.5, z3 = 0.5, c = colors.lightBlue},
+
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = 0.5, y2 = 0.5, z2 = -0.5, x3 = 0.5, y3 = -0.5, z3 = -0.5, c = colors.magenta},
+	{x1 = -0.5, y1 = -0.5, z1 = -0.5, x2 = -0.5, y2 = 0.5, z2 = -0.5, x3 = 0.5, y3 = 0.5, z3 = -0.5, c = colors.purple},
+
+	{x1 = -0.5, y1 = -0.5, z1 = 0.5, x2 = 0.5, y2 = -0.5, z2 = 0.5, x3 = 0.5, y3 = 0.5, z3 = 0.5, c = colors.pink},
+	{x1 = -0.5, y1 = -0.5, z1 = 0.5, x2 = 0.5, y2 = 0.5, z2 = 0.5, x3 = -0.5, y3 = 0.5, z3 = 0.5, c = colors.brown},
+}]]--	
+
+local model2 = textutils.serialise(model)
+
+local file = fs.open("/models/newmodelname", "w") -- Make sure you save the model in the models folder with a new name
+file.write(model2)
+file.close()
