@@ -13,10 +13,10 @@ os.loadAPI(fs.combine(APIpath,"blittle"))
 local objects = {}
 
 local camera = {
-	x = 8,
+	x = 4,
 	y = 0,
-	z = 8,
-	lookZ = 0,
+	z = 4,
+	lookZ = 45,
 	lookY = 0,
 	moveSpeed = 0.25,
 	turnSpeed = 5,
