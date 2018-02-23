@@ -3,11 +3,12 @@ local scr_x, scr_y = term.getSize()
 local keysDown, miceDown = {}, {}
 
 local path = fs.getDir(shell.getRunningProgram())
+local APIpath = fs.combine(path,"API")
 local modelDir = fs.combine(path,"models")
 
-os.loadAPI(fs.combine(path,"/ThreeD"))
-os.loadAPI(fs.combine(path,"/bufferAPI"))
-os.loadAPI(fs.combine(path,"/blittle"))
+os.loadAPI(fs.combine(APIpath,"ThreeD"))
+os.loadAPI(fs.combine(APIpath,"bufferAPI"))
+os.loadAPI(fs.combine(APIpath,"blittle"))
 
 local objects = {}
 
