@@ -2,6 +2,7 @@
 -- Made by Xelostar: https://www.youtube.com/channel/UCDE2STpSWJrIUyKtiYGeWxw
 
 local path = fs.getDir(shell.getRunningProgram())
+local modelPath = fs.combine(path,"../models")
 
 os.loadAPI(fs.combine(path,"ThreeD"))
 os.loadAPI(fs.combine(path,"bufferAPI"))
@@ -37,7 +38,7 @@ local screenWidth, screenHeight = term.getSize()
 local backgroundColor1 = colors.lime
 local backgroundColor2 = colors.lightBlue
 
-local ThreeDFrame = ThreeD.newFrame(1, 1, screenWidth, screenHeight, FoV, playerX, playerY + 0.5, playerZ, playerDirectionVer, playerDirectionHor, colors.lime, path.."/models")
+local ThreeDFrame = ThreeD.newFrame(1, 1, screenWidth, screenHeight, FoV, playerX, playerY + 0.5, playerZ, playerDirectionVer, playerDirectionHor, colors.lime, modelPath)
 local blittleOn = false
 ThreeDFrame:useBLittle(blittleOn)
 
